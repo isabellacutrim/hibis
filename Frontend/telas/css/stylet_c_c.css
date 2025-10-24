@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body{
+    background-image: url(/Frontend/img/fundoCadastro.png);
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden; /* impede o scroll */
+}
+.conteiner{
+    background-color: white;
+    border-radius: 15px;
+    width: 800px;
+    height: 500px;
+    align-items: center;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+
+}
+
+.colunas{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.coluna1 {
+    padding-right: 50px;
+    border-right: 2px solid #ff8d8d; 
+}
+
+.coluna2 {
+    padding-left: 40px;
+}
+
+
+.colunas p {
+    font-size: 18px; 
+    margin: 3px 0;    
+    margin-top: 14px;
+}
+
+h1{
+    background-color: #ff8d8d;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+p{
+
+}
+
+button{
+    background-color: #ff8d8d;
+    border: none;
+    width: 200px;
+    height: 50px;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+    line-height: 0px;
+    display: block;
+    margin: 40px auto;
+    cursor: pointer;
+    font-size: 22.5px;
+    margin-bottom: 10px;
+}
+
+/* Efeito hover */
+button:hover {
+    background-color: #000000;
+    transform: translateY(-1px);
+}
+
+/* Efeito quando clicado */
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+} 
+
+input{
+    width: 295px;
+    height: 25px;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2.3px solid #e0898a;
+    margin-top: 5px;
+}
+
+input:focus {
+  border-color: #4caf50;
+}
+
+
+
