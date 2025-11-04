@@ -6,34 +6,41 @@
     <title>Cadastro do Cliente</title>
     <link rel="shortcut icon" href="/Frontend/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/Frontend/telas/css/stylet_c_c.css">
+    
+
+
 </head>
 <body>
     <div class="conteiner">
         <h1>Cadastro</h1>
-        <div class="colunas">
-            <div class="coluna1">
-                <p>CPF</p>
-                <input type="text" size="10" maxlength="40" name="cpf" placeholder="Digite seu CPF"> 
-                <p>Nome completo</p>
-                <input type="text" size="10" maxlength="40" name="nome" placeholder="Digite seu nome"> 
-                <p>Data de nascimento</p>
-                <input type="date" size="10" maxlength="40" name="dataDeNas" placeholder="Digite sua data de nascimento "> 
-                <p>Telefone</p>
-                <input type="tel" size="10" maxlength="40" name="telefone" placeholder="Digite seu telefone"> 
+
+        <form action="/cadastro" method="POST">
+            <div class="colunas">
+                <div class="coluna1">
+                    <p>CPF</p>
+                    <input type="text" name="cpf" placeholder="Digite seu CPF"> 
+                    <p>Nome completo</p>
+                    <input type="text" name="nome_completo" placeholder="Digite seu nome"> 
+                    <p>Data de nascimento</p>
+                    <input type="date" name="data_nascimento"> 
+                    <p>Telefone</p>
+                    <input type="tel" name="telefone" placeholder="Digite seu telefone"> 
+                </div>
+
+                <div class="coluna2">
+                    <p>E-mail</p>
+                    <input type="email" name="email" placeholder="Digite seu email"> 
+                    <p>Confirmar E-mail</p>
+                    <input type="email" name="emailConfirmar" placeholder="Confirme seu email"> 
+                    <p>Senha</p>    
+                    <input type="password" name="senha" placeholder="Digite sua senha"> 
+                    <p>Confirmar senha</p>
+                    <input type="password" name="senhaConfirmar" placeholder="Confirme sua senha"> 
+                </div>
             </div>
-            <div class="coluna2">
-                <p>E-mail</p>
-                <input type="email" size="10" maxlength="40" name="email"  placeholder="Digite seu email"> 
-                <p>Confirmar E-mail</p>
-                <input type="email" size="10" maxlength="40" name="emailConfirmar"  placeholder="Confirme seu email"> 
-                <p>Senha</p>    
-                <input type="password" size="10" maxlength="40" name="senha"  placeholder="Digite sua senha"> 
-                <p>Confirmar senha</p>
-                <input type="password" size="10" maxlength="40" name="senhaConfirmar" placeholder="Confirme sua senha"> 
-            </div>
-        </div>
-        <button>Cadastrar</button>
-        
+
+            <button type="submit">Cadastrar</button>
+        </form>
     </div>
 </body>
 </html>
