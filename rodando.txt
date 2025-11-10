@@ -7,9 +7,9 @@ RODANDO:
 
 Subir pro gitHub
 comandos:
-1. git init (inicializar)
+
+1. git status (ver status) 
 2. git add . (adicionar alteraçoes)
-3. git status (ver status)
-4. git commit -m "" (fazer comentario sobre a alteração)
-5. git push origin main
+3. git commit -m "" (fazer comentario sobre a alteração)
+4. git push origin main
 
