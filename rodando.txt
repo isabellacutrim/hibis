@@ -1,7 +1,7 @@
 RODANDO:
 1. ver se está na pasta certa, só pode aparecer uma híbis
    //va no terminal e digite dir para saber se está na pasta correta
-2. no terminal de o npm install, caso nn esteja as depedências instaladas 
+2. no terminal de o npm install caso precise npm install mysql2, caso nn esteja as depedências instaladas 
 3. rode o projeto usando o comando node Backend/database/server.js ou npm start
 4. veja se o mysql está conectado, va na parte de conexão e ver se está batendo tudo
 
