@@ -15,7 +15,7 @@ app.use('/img', express.static(path.join(__dirname, '../../Frontend/img')));
 const conexao = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '1234',
+    password: '20252769gg.',
     database: 'CadastroCliente'
 });
 
@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../Frontend/index.html'));
 });
 
-app.get('/cadastrocliente', (req, res) => {
+app.get('/cadastro_cliente', (req, res) => {
     res.sendFile(path.join(__dirname, '../../Frontend/telas/html/cadastro_cliente.html'));
 });
 

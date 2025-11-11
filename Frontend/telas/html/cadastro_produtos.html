@@ -4,32 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de produtos</title>
-    <link rel="shortcut icon" href="/Frontend/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/Frontend/telas/css/stylet_c_c.css">
-    
-
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/Frontend/telas/css/style_produto.css">
 
 </head>
 <body>
-    <div class="conteiner">
+
+        <div class="conteiner">
         <h1>Cadastro de Produtos</h1>
 
-        <form action="/produtos" method="POST">
+        <form action="/cadastro" method="POST">
             <div class="colunas">
                 <div class="coluna1">
                     <p>Nome:</p>
                     <input type="text" name="nome" placeholder="Digite o nome do produto"> 
                     <p>Código:</p>
-                    <input type="text" name="codigo" placeholder="Defina um código para o produto"> 
+                    <input type="code" name="codigo" placeholder="Confirme o código do produto"> 
                     <p>Confirmar código:</p>
-                    <input type="text" name="confi_cod" placeholder="Confirme o código do produto"> 
-                    <p>Categoria:</p>
-                    <input type="categoria" name="categoria"  placeholder="Informe a categoria do produto" > 
-                     <p>Quantidade:</p>
-                    <input type="quantidade" name="quantidade"  placeholder="Informe a quantidade" > 
-                    <p>Código do funcionário</p>
-                    <input type="cod_func" name="cod_func" placeholder="Digite o código do funcionário "> 
+                    <input type="code" name="confi_cod" placeholder="Confirme o código do produto"> 
+
                 </div>
+
+                <div class="coluna2">
+                    <p>Categoria</p>
+                    <input type="text" name="categoria" placeholder="Informe a categoria do produto"> 
+                    <p>Quantidade:</p>
+                    <input type="number" name="quantidade" placeholder="Informe a quantidade"> 
+                    <p>Código do funcionário:</p>    
+                    <input type="code" name="senha" placeholder="Digite o código do funcionário ">  
+                </div>
+            </div>
 
             <button type="submit">Cadastrar</button>
             </div>
