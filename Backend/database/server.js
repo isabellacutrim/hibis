@@ -15,9 +15,10 @@ app.use('/img', express.static(path.join(__dirname, '../../Frontend/img')));
 const conexao = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '20252769gg.',
+    password: '1234',
     database: 'CadastroCliente'
 });
+
 
 conexao.connect(err => {
     if(err) return console.log('Erro ao conectar ao MySQL:', err);
@@ -57,3 +58,8 @@ app.get('/cadastro_cliente', (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
+
+
+app.get('/cadastro_produto'), (req, res) => {
+    res.sendFile(path.join(__dirname, '../../Frontend/telas/html/cadastro_produto.html'))
+}
