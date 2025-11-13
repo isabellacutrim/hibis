@@ -10,6 +10,9 @@ document.querySelector('form').addEventListener('submit', async function(event) 
     const emailConf = document.querySelector('input[name="emailConfirmar"]').value;
     const senha = document.querySelector('input[name="senha"]').value;
     const senhaConf = document.querySelector('input[name="senhaConfirmar"]').value;
+
+    if (email !== emailConf) return res.status(400).send("Emails não conferem!");
+    if (senha !== senhaConf) return res.status(400).send("Senhas não conferem!");
 })
 
 document.querySelector('form').addEventListener('submit', async function(event) {
