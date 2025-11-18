@@ -1,4 +1,5 @@
-document.querySelector('form').addEventListener('submit', async function(event) {
+//cadastro cliente
+document.querySelector('#formCliente').addEventListener('submit', async function(event) {
     
     event.preventDefault();
 
@@ -11,18 +12,17 @@ document.querySelector('form').addEventListener('submit', async function(event) 
     const senha = document.querySelector('input[name="senha"]').value;
     const senhaConf = document.querySelector('input[name="senhaConfirmar"]').value;
 
-    if (email !== emailConf) return res.status(400).send("Emails não conferem!");
-    if (senha !== senhaConf) return res.status(400).send("Senhas não conferem!");
 })
 
-document.querySelector('form').addEventListener('submit', async function(event) {
+//cadastro produto
+document.querySelector('#formProduto').addEventListener('submit', async function(event) {
     event.preventDefault();
-    const nome = document.querySelectorAll('input[name="nome"]').value;
+    const nome = document.querySelector('input[name="nome"]').value;
     const cod = document.querySelectorAll('input[name="codigo"]').value;
-    const confCod = document.querySelectorAll('input[name="confi_cod"]').value;
-    const categoria = document.querySelectorAll('input[name="categoria"]').value;
-    const qtd = document.querySelectorAll('input[name="quantidade"]').value;
-    const emailFunc = document.querySelectorAll('input[name="emailFunc"]').value;
+    const confCod = document.querySelector('input[name="confi_cod"]').value;
+    const categoria = document.querySelector('input[name="categoria"]').value;
+    const qtd = document.querySelector('input[name="quantidade"]').value;
+    const emailFunc = document.querySelector('input[name="emailFunc"]').value;
 
     
     

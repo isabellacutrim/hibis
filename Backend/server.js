@@ -12,6 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 const clienteRota = require('./requisicao/Cliente.js'); 
 app.use('/cliente', clienteRota)
 
+const ProdutoRota = require('./requisicao/Produto.js'); 
+app.use('/Produto', ProdutoRota)
+
 //arquivos estaticos
 app.use(express.static(path.join(__dirname, '../Frontend')));
 app.use('/telas', express.static(path.join(__dirname, '../Frontend/telas')));
