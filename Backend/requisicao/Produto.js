@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router();
 const conexao = require('../database/conexao.js')
 
-//post (cadastra cliente)
-//http://localhost:3000/Produto/cadastroCliente
+//post (cadastra produto)
+//http://localhost:3000/Produto/cadastroProduto
 router.post('/cadastroProduto', (req, res) => {
     console.log(req.body);
 
