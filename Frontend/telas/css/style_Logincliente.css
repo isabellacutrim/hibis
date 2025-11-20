@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 body{
-    background-image: url(/img/fundoCadastro.png);
+    background-image: url(../../img/fundoCadastro.png);
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -10,13 +10,13 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    overflow: hidden; /* impede o scroll */
+    overflow: hidden; 
 }
 .conteiner{
     background-color: white;
-    border-radius: 15px;
-    width: 800px;
-    height: 520px;
+    border-radius: 10px;
+    width: 400px;
+    height: 430px;
     align-items: center;
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0,0,0,0.4);
@@ -30,17 +30,13 @@ body{
     gap: 20px;
 }
 .coluna1 {
-    padding-right: 50px;
-    border-right: 2px solid #ff8d8d; 
-}
-
-.coluna2 {
-    padding-left: 40px;
+    margin-left: 80px;
+    margin-top: -5px;
 }
 
 
 .colunas p {
-    font-size: 18px; 
+    font-size: 20px; 
     margin: 3px 0;    
     margin-top: 14px;
 }
@@ -51,35 +47,32 @@ h1{
     text-align: center;
     margin-bottom: 20px;
 }
-p{
 
-}
 
 button{
     background-color: #ff8d8d;
     border: none;
-    width: 200px;
+    width: 295px;
     height: 50px;
     align-items: center;
     color: white;
     border-radius: 10px;
     line-height: 0px;
-    display: block;
-    margin: 40px auto;
+    transform: translate(-200px, 280px);
     cursor: pointer;
-    font-size: 22.5px;
-    margin-bottom: 10px;
+    font-size: 20.5px;
+    margin-bottom: 60px;
 }
 
 /* Efeito hover */
 button:hover {
     background-color: #000000;
-    transform: translateY(-1px);
+    transform: translateY(-200px, 280);
 }
 
 /* Efeito quando clicado */
 button:active {
-    transform: translateY(0);
+    transform: translateY(-200px, 280);
     box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 } 
 
@@ -95,6 +88,21 @@ input{
 input:focus {
   border-color: #4caf50;
 }
+
+.botao-extra{
+    background-color: #ff8d8d;
+    border: none;
+    width: 295px;
+    height: 40px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transform: none; 
+    
+}
+
 
 
 

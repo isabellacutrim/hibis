@@ -10,13 +10,13 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    overflow: hidden; /* impede o scroll */
+    overflow: hidden; 
 }
 .conteiner{
     background-color: white;
     border-radius: 15px;
-    width: 760px;
-    height: 450px;
+    width: 800px;
+    height: 520px;
     align-items: center;
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0,0,0,0.4);
@@ -30,22 +30,19 @@ body{
     gap: 20px;
 }
 .coluna1 {
-    /* linha que fica no meio, separando a coluna  */
-    padding-right: 55px;
+    padding-right: 50px;
     border-right: 2px solid #ff8d8d; 
 }
 
 .coluna2 {
-    
-    padding-left: 35px;
+    padding-left: 40px;
 }
 
 
 .colunas p {
     font-size: 18px; 
-    /* distancia entre as informações */
     margin: 3px 0;    
-    margin-top: 18px;
+    margin-top: 14px;
 }
 
 h1{
@@ -54,15 +51,13 @@ h1{
     text-align: center;
     margin-bottom: 20px;
 }
-p{
 
-}
 
 button{
     background-color: #ff8d8d;
     border: none;
-    width: 270px;
-    height: 40px;
+    width: 200px;
+    height: 50px;
     align-items: center;
     color: white;
     border-radius: 10px;
@@ -98,3 +93,9 @@ input{
 input:focus {
   border-color: #4caf50;
 }
+
+
+
+
+
+
