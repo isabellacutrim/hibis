@@ -5,6 +5,15 @@ RODANDO:
 3. rode o projeto usando o comando node Backend/database/server.js ou npm start
 4. veja se o mysql está conectado, va na parte de conexão e ver se está batendo tudo
 
+usando react:
+comandos = 
+npm create vite@latest
+
+npm install expo
+npx expo install react-dom react-native-web
+npx expo start
+w
+
 Subir pro gitHub
 comandos:
 
