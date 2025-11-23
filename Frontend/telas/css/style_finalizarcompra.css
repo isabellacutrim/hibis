@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+body{
+    background-image: url(/Frontend/img/fundoCadastro.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden; 
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.conteiner{
+    color: white;
+    background-color: #ff8d8d; 
+    border-radius: 15px;
+    width: 500px;
+    height: 150px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    margin: auto;
+    margin-top: 150px;
+}
+.conteiner:hover {
+    background-color: #ffffff;
+    transform: translateY(-1px);
+    width: 520px;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    color: #ff8d8d;
+}
+p {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 40px;
+    color: #000000;
+}
