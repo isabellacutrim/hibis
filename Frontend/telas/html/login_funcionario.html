@@ -9,23 +9,32 @@
 </head>
 <body>
 
-
     <div class="conteiner">
         <h1>Login Funcionário</h1>
 
-        <form action="/login" method="POST" id="formCliente">
+        <form id="formFuncionario">
+
             <div class="colunas">
                 <div class="coluna1">
                     <p>E-mail</p>
-                    <input type="text" name="cpf" placeholder="Digite seu E-mail"> 
-                    <p>Senha</p>
-                    <input type="text" name="nome_completo" placeholder="Digite sua Senha"> 
-                    <p>Confirmar senha</p>
-                    <input type="text" name="nome_completo" placeholder="Confirme sua Senha"> 
-                </div>
+                    <input type="text" name="email" placeholder="Digite seu E-mail"> 
 
-            <button type="submit">Entrar</button>
+                    <p>Senha</p>
+                    <input type="password" name="senha" placeholder="Digite sua Senha"> 
+
+                    <p>Confirmar senha</p>
+                    <input type="password" name="confirmar_senha" placeholder="Confirme sua Senha"> 
+                </div>
+            </div>
+
+            <!-- BOTÃO CORRIGIDO -->
+            <button type="button" onclick="window.location.href='./telas/html/cadastro_produtos.html'">
+                Entrar
+            </button>
+
         </form>
+
     </div>
+
 </body>
 </html>
