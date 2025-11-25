@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 body{
-    background-image: url(/Frontend/img/fundoCadastro.png);
+    background-color: rgb(243, 226, 226) ;
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -13,7 +13,7 @@ body{
     overflow: hidden; /* impede o scroll */
 }
 .conteiner{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
     width: 760px;
     height: 450px;

@@ -9,8 +9,7 @@
 </head>
 <body>
 
-
-   <div class="conteiner">
+    <div class="conteiner">
         <h1>Login Usuário</h1>
 
         <form action="/login" method="POST" id="formCliente">
@@ -18,13 +17,22 @@
                 <div class="coluna1">
                     <p>E-mail</p>
                     <input type="text" name="cpf" placeholder="Digite seu E-mail"> 
+
                     <p>Senha</p>
                     <input type="text" name="nome_completo" placeholder="Digite sua Senha"> 
-                    <button type="button" class="botao-extra">Esqueceu sua senha?</button> 
-                </div>
 
-            <button type="submit">Entrar</button>
+                    <button 
+                        type="button" 
+                        class="botao-texto" 
+                        onclick="window.location.href='cadastro_cliente.html'">
+                        Não possui conta? Cadastre-se aqui
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="botao-entrar">Entrar</button>
         </form>
     </div>
+
 </body>
 </html>

@@ -12,85 +12,70 @@ body{
     background-attachment: fixed;
     overflow: hidden; 
 }
+
 .conteiner{
     background-color: white;
     border-radius: 10px;
     width: 400px;
-    height: 430px;
-    align-items: center;
-    transform: translateY(0);
+    padding-bottom: 25px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-
 }
 
-.colunas{
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-.coluna1 {
-    margin-left: 80px;
-    margin-top: -5px;
-}
-
-
-.colunas p {
-    font-size: 20px; 
-    margin: 3px 0;    
-    margin-top: 14px;
-}
-
-h1{
+h1 {
     background-color: #ff8d8d;
     color: white;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 0;            
+    padding: 10px 0;      
+    border-radius: 10px 10px 0 0;
 }
 
 
-button{
-    background-color: #ff8d8d;
-    border: none;
-    width: 800px;
-    height: 50px;
-    align-items: center;
-    color: white;
-    border-radius: 10px;
-    line-height: 0px;
-    transform: translate(-200px, 280px);
-    cursor: pointer;
-    font-size: 20.5px;
-    margin-bottom: 60px;
+.colunas{
+    display: flex;
+    justify-content: flex-start;
 }
 
-/* Efeito hover */
-button:hover {
-    background-color: #000000;
-    transform: translateY(-200px, 280);
+.coluna1 {
+    margin-left: 35px;
 }
 
-/* Efeito quando clicado */
-button:active {
-    transform: translateY(-200px, 280);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-} 
+.colunas p {
+    font-size: 18px; 
+    margin: 10px 0 4px 0;    
+}
 
 input{
-    width: 295px;
-    height: 25px;
+    width: 290px;
+    height: 30px;
     border-radius: 10px;
     padding: 5px;
     border: 2.3px solid #e0898a;
-    margin-top: 5px;
 }
 
 input:focus {
   border-color: #4caf50;
 }
 
+.botao-entrar {
+    background-color: #ff8d8d;
+    border: none;
+    width: 295px;
+    height: 50px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20.5px;
+    margin: 30px auto 0;
+    display: block;
+}
 
+.botao-entrar:hover {
+    background-color: #000000;
+}
 
-
+.botao-entrar:active {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
 
 
