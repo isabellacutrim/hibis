@@ -7,15 +7,20 @@ const conexao = require('../database/conexao.js')
 router.post('/cadastroProduto', (req, res) => {
     console.log(req.body);
 
-    const { codProduto, confCod, nomeProduto, classificProduto, valorProduto } = req.body;
+    const { nomeProduto, codProduto, confCod, classificProduto, quantidade, valorProduto } = req.body;
 
-    if (!codProduto || !confCod || !nomeProduto || !classificProduto || !valorProduto) {
+
+
+    if (!nomeProduto || !codProduto || !confCod || !classificProduto || !quantidade || !valorProduto) {
         return res.status(400).send("Todos os campos são obrigatórios!");
     }
     if (codProduto !== confCod) return res.status(400).send("Código não conferem!");
+    if (classificProduto !== 'Boca' && classificProduto !== 'Olhos' && classificProduto !== 'Pele' && classificProduto !== 'Preparação') {
+        return res.status(400).send("Classificação inválida! Deve ser uma das seguintes opções: Boca, Olhos, Pele, Preparação. ");
+    }
     
-    const query = 'INSERT INTO tbUsuario (codProduto, nomeProduto, classificProduto, valorProduto) VALUES (?, ?, ?, ?)';
-    const valores = [codProduto, nomeProduto, classificProduto, valorProduto];
+    const query = 'INSERT INTO tbProduto (nomeProduto, classificProduto, valorProduto) VALUES (?, ?, ?)';
+    const valores = [nomeProduto, classificProduto, parseFloat(valorProduto.replace(',', '.'))];
 
     conexao.query(query, valores, (err) => {
         if (err) {

@@ -44,6 +44,8 @@ router.post('/cadastroCliente', (req, res) => {
     }
     if (email !== emailConfirmar) return res.status(400).send("Emails não conferem!");
     if (senha !== senhaConfirmar) return res.status(400).send("Senhas não conferem!");
+    if (cpf.length !== 11) return res.status(400).send("CPF inválido! Deve conter 11 dígitos.");
+    if (telefone.length < 10 || telefone.length > 11) return res.status(400).send("Telefone inválido! Deve conter 10 ou 11 dígitos.");
 
     const query = 'INSERT INTO tbUsuario (cpf, nome_completo, data_nascimento, telefone, email, senha) VALUES (?, ?, ?, ?, ?, ?)';
     const valores = [cpf, nome_completo, data_nascimento, telefone, email, senha];

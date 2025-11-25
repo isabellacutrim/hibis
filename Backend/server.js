@@ -15,6 +15,10 @@ app.use('/cliente', clienteRota)
 const ProdutoRota = require('./requisicao/Produto.js'); 
 app.use('/Produto', ProdutoRota)
 
+const FuncionarioRota = require('./requisicao/funcionario.js'); 
+app.use('/Funcionario', FuncionarioRota)
+
+
 //arquivos estaticos
 app.use(express.static(path.join(__dirname, '../Frontend')));
 app.use('/telas', express.static(path.join(__dirname, '../Frontend/telas')));
@@ -25,16 +29,6 @@ app.use('/img', express.static(path.join(__dirname, '../Frontend/img')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../Frontend/index.html'));
 });
-
-// Rota para o cadastro de cliente
-app.get('/cadastroCliente', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Frontend/telas/html/cadastro_cliente.html'));
-});
-
-app.get('/cadastro_produto', (req, res) => {
-    res.sendFile(path.join(__dirname, '../Frontend/telas/html/cadastro_produto.html'));
-});
-
 
 // Inicia o servidor
 app.listen(port, () => {

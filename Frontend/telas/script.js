@@ -17,15 +17,20 @@ document.querySelector('#formCliente').addEventListener('submit', async function
 //cadastro produto
 document.querySelector('#formProduto').addEventListener('submit', async function(event) {
     event.preventDefault();
-    const nome = document.querySelector('input[name="nome"]').value;
-    const cod = document.querySelectorAll('input[name="codigo"]').value;
+    const nomeProduto = document.querySelector('input[name="nome"]').value;
+    const codProduto = document.querySelectorAll('input[name="codigo"]').value;
     const confCod = document.querySelector('input[name="confi_cod"]').value;
-    const categoria = document.querySelector('input[name="categoria"]').value;
-    const qtd = document.querySelector('input[name="quantidade"]').value;
-    const emailFunc = document.querySelector('input[name="emailFunc"]').value;
-
-    
+    const classificProduto = document.querySelector('input[name="categoria"]').value;
+    const quantidade = document.querySelector('input[name="quantidade"]').value;
+    const valorProduto = document.querySelector('input[name="valorProduto"]').value;
     
 })
 
+//login Funcionario
+document.querySelector('#formFuncionario').addEventListener('submit', async function(event) {   
+    event.preventDefault();
+    const email = document.querySelector('input[name="email"]').value;
+    const senha = document.querySelector('input[name="senha"]').value;
+    const confirmar_senha = document.querySelector('input[name="confirmar_senha"]').value;
+})  
 

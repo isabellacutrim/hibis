@@ -1,5 +1,16 @@
-CREATE DATABASE Produto;
-USE Produto;
+CREATE DATABASE Hibis
+DROP DATABASE Hibis;
+USE Hibis;
+
+CREATE TABLE tbUsuario (
+    id  INT  AUTO_INCREMENT PRIMARY KEY,
+    cpf         Varchar(11) NOT NULL,
+    nome_completo VARCHAR(150) NOT NULL,
+    data_nascimento   DATE     NOT NULL,
+    telefone     VARCHAR(15)   NOT NULL,
+    email  VARCHAR(150) UNIQUE NOT NULL,
+    senha      VARCHAR(50)      NOT NULL
+);
 
 CREATE TABLE tbProduto(
     codProduto INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,3 +41,27 @@ INSERT INTO tbProduto (codProduto, nomeProduto, classificProduto, valorProduto) 
 (19, 'Gloss Híbis Glow', 'Boca', 29.90),
 (20, 'Batom Híbis Kisses', 'Boca', 35.00),
 (21, 'Lápis de boca HB LipFrame', 'Boca', 25.00);
+
+
+CREATE TABLE tbFuncionario(
+	codFuncionario  INT AUTO_INCREMENT PRIMARY KEY,
+	nomeFuncionario VARCHAR (50) NOT NULL,	
+	cpfFuncionario VARCHAR (11) NOT NULL,
+	dataNascFunc DATE NOT NULL,
+	telefoneFunc VARCHAR(15) NOT NULL,
+	emailFunc VARCHAR(150) NOT NULL,
+    senha VARCHAR(10) NOT NULL
+);
+    
+INSERT INTO tbFuncionario (nomeFuncionario, cpfFuncionario, dataNascFunc, telefoneFunc, emailFunc, senha ) VALUES
+('Isabella Cutrim', '74466553587', '2008-11-19', '11985757666', 'isabellaCutrim@gmail.com', 'hibis2025'),
+('Geovanna Lino', '94466553587','2009-01-20', '11974630976', 'GeovannaLino@gmail.com', 'hibis2025' ),
+('Esther Siqueira', '74466553587', '2008-07-03', '11935793575', 'EstherSiqueira@gmail.com', 'hibis2025' ),
+('Sophia Barcelos', '74466553087', '2008-11-07', '11996532456', 'SophiaBarcelosm@gmail.com' , 'hibis2025');
+
+select * from tbProduto;
+select * from tbusuario;
+select * from tbFuncionario;
+drop table tbusuario;
+drop table tbFuncionario;
+
