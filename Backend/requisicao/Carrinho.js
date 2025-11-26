@@ -14,7 +14,7 @@ router.get('/todos', (req, res) => {
 
 //get (por codigo)
 //http://localhost:3000/carrinho/id/1
-router.get('/id/:id', (req, res) => {
+router.get('/id/:id_carrinho', (req, res) => {
     const id = req.params.id;
     conexao.query('SELECT * FROM tbCarrinho WHERE id_carrinho = ?', [id_carrinho], (err, results) => {
         if (err) return res.status(500).json({ error: err.message })
@@ -50,7 +50,7 @@ router.post('/cadastroCarrinho', (req, res) => {
 
     const { id_cliente, id_produto, quantidade  } = req.body;
 
-    if (!id_cliente || !id_produto || !data_nascimento || !quantidade ) {
+    if (!id_cliente || !id_produto || !quantidade ) {
         return res.status(400).send("Todos os campos são obrigatórios!");
     }
     
@@ -87,7 +87,7 @@ router.head('/existe/:id_carrinho', (req, res) => {
 router.patch('/atualizar/quantidade/:id_carrinho', (req, res) => {
     const id_carrinho = req.params.id_carrinho;
     const quantidade = req.body.quantidade;
-    conexao.query('UPDATE tbCliente SET quantidade = ? WHERE id_carrinho = ?', [id_carrinho, quantidade], (err, results) => {
+    conexao.query('UPDATE tbCliente SET quantidade = ? WHERE id_carrinho = ?', [quantidade, id_carrinho], (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json({ message: 'Quantidade atualizado com sucesso.' });
     });
