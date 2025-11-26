@@ -62,32 +62,67 @@ INSERT INTO tbFuncionario (nomeFuncionario, cpfFuncionario, dataNascFunc, telefo
 CREATE TABLE tbCarrinho (
 	id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
 	id_cliente  INT  NOT NULL,
-    id_produto  INT  NOT NULL,
-    quantidade INT NOT NULL DEFAULT 1,
+  id_produto  INT  NOT NULL,
+  quantidade INT NOT NULL DEFAULT 1,
 	FOREIGN KEY (id_cliente) REFERENCES tbUsuario(id),
 	FOREIGN KEY (id_produto) REFERENCES tbProduto(id)
 );
 
--- ver itens do carrinho
+-- view para ver o carrinho completo
 CREATE VIEW vw_carrinho_completo AS
 SELECT 
-    u.nome_completo as tbUsuario,
-    p.nomeProduto as tbProduto,
+    u.id as usuario_id,
+    u.nome_completo as usuario_nome,
+    p.codProduto as produto_id,
+    p.nomeProduto,
     p.valorProduto,
-    (p.preco * c.quantidade) as subtotal,
-    c.data_adicao
+    c.quantidade,
+    (p.valorProduto * c.quantidade) as subtotal
 FROM tbcarrinho c
-INNER JOIN tbusuario u ON c.id_usuario = u.id
-INNER JOIN tbproduto p ON c.id_produto = p.id;
+INNER JOIN tbUsuario u ON c.id_cliente = u.usuario_id
+INNER JOIN tbProduto p ON c.id_produto = p.produto_id;
+
+-- FUNCTION para calcular total do carrinho
+CREATE FUNCTION fc_calcular_total_carrinho(p_usuario_id INT)
+RETURNS DECIMAL(10,2) AS $$
+DECLARE
+    total DECIMAL(10,2);
+BEGIN
+    SELECT (SUM(p.valorProduto * c.quantidade), 0)
+    INTO total
+    FROM tbcarrinho c
+    INNER JOIN tbProduto p ON c.id_produto = p.id
+    WHERE c.id_usuario = p_usuario_id;
+    
+    RETURN total;
+END;
 
 
--- atualizar quantidade no carrinho
--- calcular total do carrinho
-
+-- 3.  para atualizar quantidade
+CREATE PROCEDURE sp_atualizar_quantidade_carrinho(
+    p_usuario_id INT,
+    p_produto_id INT,
+    p_nova_quantidade INT
+)
+AS $$
+BEGIN
+    IF p_nova_quantidade <= 0 THEN
+        DELETE FROM tbcarrinho 
+        WHERE id_usuario = p_usuario_id AND id_produto = p_produto_id;
+    ELSE
+        UPDATE tbcarrinho 
+        SET quantidade = p_nova_quantidade
+        WHERE id_usuario = p_usuario_id AND id_produto = p_produto_id;
+    END IF;
+END;
 
 select * from tbProduto;
 select * from tbusuario;
-select * from tbFuncionario where ;
+select * from tbFuncionario;
+select * from vw_carrinho_completo;
+select * from vw_carrinho_completo where usuario_id = 1;
+SELECT fn_calcular_total_carrinho(1) as total_carrinho;
+CALL sp_atualizar_quantidade_carrinho(1, 5, 3);
 drop table tbusuario;
 drop table tbFuncionario;
 
