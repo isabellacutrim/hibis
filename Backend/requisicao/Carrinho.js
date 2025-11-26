@@ -67,82 +67,30 @@ router.post('/cadastroCarrinho', (req, res) => {
 });
 
 
-//head (verificar se cliente existe)
-//http://localhost:3000/cliente/existe/12345678900
-router.head('/existe/:cpf', (req, res) => {
-    const cpf = req.params.cpf;     
-    conexao.query('SELECT 1 FROM tbusuario WHERE cpf = ?', [cpf], (err, results) => {
+//head (verificar se carrinho existe)
+//http://localhost:3000/carrinho/existe/2
+router.head('/existe/:id_carrinho', (req, res) => {
+    const id_carrinho = req.params.id_carrinho;     
+    conexao.query('SELECT 1 FROM tbCarrinho WHERE id_carrinho = ?', [id_carrinho], (err, results) => {
         if (err){
             return res.status(500).json({ error: err.message })
         }
         if (results.length > 0) {
-            return res.status(200).end(); // Cliente existe
+            return res.status(200).end(); // carrinho existe
         }
-        return res.status(404).end(); // Cliente não existe
+        return res.status(404).end(); // carrinho não existe
     });
 }); 
 
-//Patch (atualizar email)
-//http://localhost:3000/cliente/atualizar/email/1
-router.patch('/atualizar/email/:id', (req, res) => {
-    const id = req.params.id;
-    const email = req.body.email;
-    conexao.query('UPDATE tbusuario SET email = ? WHERE id = ?', [email, id], (err, results) => {
+//Patch (atualizar quantidade)
+//http://localhost:3000/carrinho/atualizar/quantidade/2
+router.patch('/atualizar/quantidade/:id_carrinho', (req, res) => {
+    const id_carrinho = req.params.id_carrinho;
+    const quantidade = req.body.quantidade;
+    conexao.query('UPDATE tbCliente SET quantidade = ? WHERE id_carrinho = ?', [id_carrinho, quantidade], (err, results) => {
         if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: 'Email atualizado com sucesso.' });
+        res.json({ message: 'Quantidade atualizado com sucesso.' });
     });
-});
-//patch (atualizar telefone)
-//http://localhost:3000/cliente/atualizar/telefone/1
-router.patch('/atualizar/telefone/:id', (req, res) => {
-    const id = req.params.id;
-    const telefone = req.body.telefone;
-    conexao.query('UPDATE tbusuario SET telefone = ? WHERE id = ?', [telefone, id], (err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: 'Telefone atualizado com sucesso.' });
-    });
-});
-
-//patch (atualizar senha)
-//http://localhost:3000/cliente/atualizar/senha/1
-router.patch('/atualizar/senha/:id', (req, res) => {
-    const id = req.params.id;
-    const senha = req.body.senha;
-    conexao.query('UPDATE tbusuario SET senha = ? WHERE id = ?', [senha, id], (err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: 'Senha atualizada com sucesso.' });
-    });
-});
-
-//put (atualizar todos os dados do cliente)
-//http://localhost:3000/cliente/atualizar/todos/1
-//YYYY/MM/DD
-router.put('/atualizar/todos/:id', (req, res) => {
-    const id = req.params.id;
-    const { cpf, nome_completo, data_nascimento, telefone, email, senha } = req.body;   
-    const query = 'UPDATE tbusuario SET cpf = ?, nome_completo = ?, data_nascimento = ?, telefone = ?, email = ?, senha = ? WHERE id = ?';
-    const valores = [cpf, nome_completo, data_nascimento, telefone, email, senha, id];
-    conexao.query(query, valores, (err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: 'Dados do cliente atualizados com sucesso.' });
-    });
-});
-
-// post (login)
-//http://localhost:3000/cliente/login
-router.post('/login', (req, res) => {
-    const { email, senha } = req.body;
-    if (!email || !senha) {
-        return res.status(400).json({error: 'Email e senha são obrigatórios!'});
-    }
-    try {
-        conexao.query('SELECT * FROM tbusuario WHERE email = ? AND senha = ?', [email, senha], (err, results) => {
-            if (err) return res.status(500).json({ error: err.message });
-        });
-    } catch (err) {
-        return res.status(500).json({ error: err.message });
-    }
-
 });
 
 module.exports = router;
