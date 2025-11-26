@@ -12,24 +12,24 @@ router.get('/funcionarios', (req, res) => {
     });
 });
 
-//get (login)
-//http://localhost:3000/Funcionario/funcionario
-router.get('/funcionario', (req, res) => {
-    const { email, senha, confirmar_senha} = req.query;
-    if (!email || !senha || !confirmar_senha) {
-        return res.status(400).send("Todos os campos são obrigatórios!");
+//post (login)
+//http://localhost:3000/Funcionario/login
+router.post('/login', (req, res) => {
+    const { email, senha } = req.body;
+    if (!email || !senha) {
+        return res.status(400).json({ error: 'Email e senha são obrigatórios.' });
     }
-    if (senha !== confirmar_senha) {
-        return res.status(400).send("Senhas não conferem!");
+    try{
+        conexao.query(
+            'SELECT * FROM tbFuncionario WHERE email = ? AND senha = ?', [email, senha], 
+        (err, results) => {
+            if (err) return res.status(500).json({ error: err.message });   
+    });
+    }catch(err){
+        return res.s
+        tatus(500).json({ error: err.message });
     }
-    conexao.query('SELECT * FROM tbFuncionario WHERE emailFunc = ?'), [email], (err, results) => {
-        // if (senha !== results.senhaFunc) {
-        //     return res.status(400).send("Senha incorreta!");
-        // }
-        if (err) return res.status(500).json({ error: err.message })
-        res.json(results);
-    }
-});
 
+});
 module.exports = router;
 
