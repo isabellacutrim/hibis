@@ -39,9 +39,9 @@ router.post('/login', (req, res) => {
             return res.status(200).json({ 
                 message: 'Login realizado com sucesso',
                 funcionario: {
-                    id: funcionario.id,
-                    nome: funcionario.nome,
-                    email: funcionario.email
+                    codFuncionario: funcionario.codFuncionario,
+                    nomeFuncionario: funcionario.nomeFuncionario,
+                    emailFunc: funcionario.emailFunc
                     
                 }
             });
