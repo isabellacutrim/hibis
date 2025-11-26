@@ -121,5 +121,21 @@ router.put('/atualizar/todos/:id', (req, res) => {
     });
 });
 
+// post (login)
+//http://localhost:3000/cliente/login
+router.post('/login', (req, res) => {
+    const { email, senha } = req.body;
+    if (!email || !senha) {
+        return res.status(400).json({error: 'Email e senha são obrigatórios!'});
+    }
+    try {
+        conexao.query('SELECT * FROM tbusuario WHERE email = ? AND senha = ?', [email, senha], (err, results) => {
+            if (err) return res.status(500).json({ error: err.message });
+        });
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
+    }
+
+});
 
 module.exports = router;

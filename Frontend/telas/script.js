@@ -34,3 +34,9 @@ document.querySelector('#formFuncionario').addEventListener('submit', async func
     const confirmar_senha = document.querySelector('input[name="confirmar_senha"]').value;
 })  
 
+document.querySelector('#loginCliente').addEventListener('submit', async function(event) {   
+    event.preventDefault();
+    const email = document.querySelector('input[name="email"]').value;
+    const senha = document.querySelector('input[name="senha"]').value;
+})
+
