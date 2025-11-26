@@ -16,25 +16,36 @@ router.get('/todos', (req, res) => {
 //http://localhost:3000/carrinho/id/1
 router.get('/id/:id', (req, res) => {
     const id = req.params.id;
-    conexao.query('SELECT * FROM tbCarrinho WHERE id = ?', [id], (err, results) => {
+    conexao.query('SELECT * FROM tbCarrinho WHERE id_carrinho = ?', [id_carrinho], (err, results) => {
         if (err) return res.status(500).json({ error: err.message })
         res.json(results);
     });
 });
 
-//get (por cpf)
-//http://localhost:3000/cliente/cpf/12345678900
-router.get('/cpf/:cpf', (req, res) => {
-    const cpf = req.params.cpf;
-    conexao.query('SELECT * FROM tbusuario WHERE cpf = ?', [cpf], (err, results) => {
+//get (por cliente)
+//http://localhost:3000/carrinho/idCliente/1
+router.get('/idCliente/:id_cliente', (req, res) => {
+    const id_cliente = req.params.id_cliente;
+    conexao.query('SELECT * FROM tbCarrinho WHERE id_cliente = ?', [id_cliente], (err, results) => {
         if (err) return res.status(500).json({ error: err.message })
         res.json(results);
     });
 });
 
-//post (cadastra cliente)
-//http://localhost:3000/cliente/cadastroCliente
-router.post('/cadastroCliente', (req, res) => {
+  
+//get (por produto)
+//http://localhost:3000/carrinho/idProduto/1
+router.get('/idProduto/:id_produto', (req, res) => {
+    const id_produto = req.params.id_produto;
+    conexao.query('SELECT * FROM tbCarrinho WHERE id_produto = ?', [id_produto], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message })
+        res.json(results);
+    });
+});
+
+//post (cadastra carrinho)
+//http://localhost:3000/carrinho/cadastroCarrinho
+router.post('/cadastroCarrinho', (req, res) => {
     console.log(req.body);
 
     const { cpf, nome_completo, data_nascimento, telefone, email, emailConfirmar, senha, senhaConfirmar } = req.body;
