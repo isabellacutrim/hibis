@@ -1,6 +1,7 @@
 body{
     background-color: #ffabab;
-    overflow-y: auto;
+    background-size: cover; 
+    overflow-x: hidden; /* Oculta o transbordo horizontal */
 }
 
 nav{
