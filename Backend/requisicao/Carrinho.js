@@ -48,23 +48,19 @@ router.get('/idProduto/:id_produto', (req, res) => {
 router.post('/cadastroCarrinho', (req, res) => {
     console.log(req.body);
 
-    const { cpf, nome_completo, data_nascimento, telefone, email, emailConfirmar, senha, senhaConfirmar } = req.body;
+    const { id_cliente, id_produto, quantidade  } = req.body;
 
-    if (!cpf || !nome_completo || !data_nascimento || !telefone || !email || !senha) {
+    if (!id_cliente || !id_produto || !data_nascimento || !quantidade ) {
         return res.status(400).send("Todos os campos são obrigatórios!");
     }
-    if (email !== emailConfirmar) return res.status(400).send("Emails não conferem!");
-    if (senha !== senhaConfirmar) return res.status(400).send("Senhas não conferem!");
-    if (cpf.length !== 11) return res.status(400).send("CPF inválido! Deve conter 11 dígitos.");
-    if (telefone.length < 10 || telefone.length > 11) return res.status(400).send("Telefone inválido! Deve conter 10 ou 11 dígitos.");
-
-    const query = 'INSERT INTO tbUsuario (cpf, nome_completo, data_nascimento, telefone, email, senha) VALUES (?, ?, ?, ?, ?, ?)';
-    const valores = [cpf, nome_completo, data_nascimento, telefone, email, senha];
+    
+    const query = 'INSERT INTO tbCarrinho (id_cliente, id_produto, quantidade) VALUES (?, ?, ?)';
+    const valores = [id_cliente, id_produto, quantidade];
 
     conexao.query(query, valores, (err) => {
         if (err) {
-            console.log('Erro ao cadastrar usuário:', err);
-            return res.status(500).send("Erro ao cadastrar usuário.");
+            console.log('Erro ao cadastrar Carrinho:', err);
+            return res.status(500).send("Erro ao cadastrar Carrinho.");
         }
         res.send("Cadastro realizado com sucesso.");
     });
