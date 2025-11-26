@@ -59,9 +59,35 @@ INSERT INTO tbFuncionario (nomeFuncionario, cpfFuncionario, dataNascFunc, telefo
 ('Esther Siqueira', '74466553587', '2008-07-03', '11935793575', 'EstherSiqueira@gmail.com', 'hibis2025' ),
 ('Sophia Barcelos', '74466553087', '2008-11-07', '11996532456', 'SophiaBarcelosm@gmail.com' , 'hibis2025');
 
+CREATE TABLE tbCarrinho (
+	id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
+	id_cliente  INT  NOT NULL,
+    id_produto  INT  NOT NULL,
+    quantidade INT NOT NULL DEFAULT 1,
+	FOREIGN KEY (id_cliente) REFERENCES tbUsuario(id),
+	FOREIGN KEY (id_produto) REFERENCES tbProduto(id)
+);
+
+-- ver itens do carrinho
+CREATE VIEW vw_carrinho_completo AS
+SELECT 
+    u.nome_completo as tbUsuario,
+    p.nomeProduto as tbProduto,
+    p.valorProduto,
+    (p.preco * c.quantidade) as subtotal,
+    c.data_adicao
+FROM tbcarrinho c
+INNER JOIN tbusuario u ON c.id_usuario = u.id
+INNER JOIN tbproduto p ON c.id_produto = p.id;
+
+
+-- atualizar quantidade no carrinho
+-- calcular total do carrinho
+
+
 select * from tbProduto;
 select * from tbusuario;
-select * from tbFuncionario;
+select * from tbFuncionario where ;
 drop table tbusuario;
 drop table tbFuncionario;
 
