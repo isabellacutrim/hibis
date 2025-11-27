@@ -1,8 +1,6 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-
-
 const app = express();
 const port = 3000;
 app.use(cors({
@@ -10,6 +8,8 @@ app.use(cors({
 }));
 
 // Middlewares 
+// Configurações para servir arquivos estáticos e fazer o parse de JSON e URL-encoded
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

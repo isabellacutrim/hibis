@@ -18,42 +18,96 @@
         <span>Olhos</span>
     </aside>
 
+    <!-- Conteúdo Principal -->
     <main class="container">
-
-        <div class="products">
-
-            <!-- CARD 1 -->
-            <div class="card">
-                <img src="/img/delineador.png" alt="Delineador Híbis Line">
-                <h3 class="title">Delineador <br>Híbis Line</h3>
-                <p class="price">R$ 39,99</p>
-                <button>Adicionar ao carrinho</button>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="card">
-                <img src="/img/rimel.png" alt="Rímel Híbis Lash">
-                <h3 class="title">Rímel Híbis Lash</h3>
-                <p class="price">R$ 49,90</p>
-                <button>Adicionar ao carrinho</button>
-            </div>
-
-            <!-- CARD 3 -->
-            <div class="card">
-                <img src="/img/paletagarden.png" alt="Paleta de sombras Hb Garden">
-                <h3 class="title">Paleta de sombras <br>Hb Garden </h3>
-                <p class="price">R$ 59,90</p>
-                <button>Adicionar ao carrinho</button>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="card">
-                <img src="/img/paletabasic.png" alt="Paleta de sombras Hb Basic Eye">
-                <h3  class="title">Paleta de sombras <br>Hb Basic Eye</h3>
-                <p class="price">R$ 35,99</p>
-                <button>Adicionar ao carrinho</button>
-            </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" id="breadcrumbCategoria">Categoria</li>
+            </ol>
+        </nav>
+        
+        <h1 id="tituloCategoria" class="mb-4">Produtos</h1>
+        
+        <div id="loadingProdutos" class="loading">
+            Carregando produtos...
+        </div>
+        
+        <div id="produtosContainer" class="products">
+            <!-- Os produtos serão carregados dinamicamente aqui -->
+        </div>
+        
+        <div id="mensagemVazio" style="display: none; text-align: center; padding: 40px;">
+            <p>Nenhum produto encontrado nesta categoria.</p>
         </div>
     </main>
+
+    <script>
+        // Obter o ID da categoria da URL
+        const caminho = window.location.pathname.split('/');
+        const categoriaId = caminho[caminho.length - 1];
+        
+        // Carregar produtos quando a página carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            carregarProdutos(categoriaId);
+        });
+        
+        async function carregarProdutos(categoriaId) {
+            try {
+                const response = await fetch(`http://localhost:3000/Produto/listarProdutos/3`);
+                
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar produtos');
+                }
+                
+                const produtos = await response.json();
+                exibirProdutos(produtos);
+            } catch (error) {
+                console.error('Erro:', error);
+                document.getElementById('loadingProdutos').innerHTML = 
+                    'Erro ao carregar produtos. Tente novamente mais tarde.';
+            }
+        }
+        
+        function exibirProdutos(produtos) {
+            const container = document.getElementById('produtosContainer');
+            const loading = document.getElementById('loadingProdutos');
+            const mensagemVazio = document.getElementById('mensagemVazio');
+            
+            // Esconder loading
+            loading.style.display = 'none';
+            
+            if (produtos.length === 0) {
+                mensagemVazio.style.display = 'block';
+                return;
+            }
+            
+            // Atualizar breadcrumb e título
+            if (produtos.length > 0) {
+                document.getElementById('breadcrumbCategoria').textContent = produtos[0].categoria_nome;
+                document.getElementById('tituloCategoria').textContent = produtos[0].categoria_nome;
+            }
+            
+            // Gerar HTML para cada produto
+            container.innerHTML = produtos.map(produto => `
+                <div class="card" onclick="irParaDetalhes(${produto.codProduto})">
+                    <img src="${produto.imagem}" alt="${produto.nomeProduto}">
+                    <h3 class="title">${produto.nomeProduto}</h3>
+                    <p class="price">R$ ${produto.valorProduto}</p>
+                    <button onclick="event.stopPropagation(); adicionarAoCarrinho(${produto.id})">
+                        Adicionar ao carrinho
+                    </button>
+                </div>
+            `).join('');
+        }
+        
+        function irParaDetalhes(produtoId) {
+            window.location.href = `/produto/${produtoId}`;
+        }
+        
+        function adicionarAoCarrinho(produtoId) {
+            // Aqui você implementaria a lógica do carrinho
+            alert('Produto adicionado ao carrinho!');
+        }
+    </script>
 </body>
 </html>
