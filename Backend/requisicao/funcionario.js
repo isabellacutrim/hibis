@@ -22,7 +22,7 @@ router.post('/login', (req, res) => {
     }
     
     conexao.query(
-        'SELECT * FROM tbFuncionario WHERE email = ? AND senha = ?', 
+        'SELECT * FROM tbFuncionario WHERE emailfunc = ? AND senha = ?', 
         [email, senha], 
         (err, results) => {
             
@@ -36,15 +36,7 @@ router.post('/login', (req, res) => {
             }
             
             const funcionario = results[0];
-            return res.status(200).json({ 
-                message: 'Login realizado com sucesso',
-                funcionario: {
-                    codFuncionario: funcionario.codFuncionario,
-                    nomeFuncionario: funcionario.nomeFuncionario,
-                    emailFunc: funcionario.emailFunc
-                    
-                }
-            });
+            return console.log("Login bem-sucedido para o funcionário:", funcionario.nomefunc);
         }
     );
 });

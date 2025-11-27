@@ -27,7 +27,7 @@ document.querySelector('#formProduto').addEventListener('submit', async function
 })
 
 //login Funcionario
-document.querySelector('#formFuncionario').addEventListener('submit', async function(event) {   
+document.querySelector('#loginFuncionario').addEventListener('submit', async function(event) {   
     event.preventDefault();
     const email = document.querySelector('input[name="email"]').value;
     const senha = document.querySelector('input[name="senha"]').value;

@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/cliente";
+const API = "http://localhost:3000/cliente/clientes";
 
 //pegando o formulario
 const form = document.getElementById("formCadastro");
