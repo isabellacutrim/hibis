@@ -23,6 +23,8 @@ app.use('/Produto', ProdutoRota)
 const FuncionarioRota = require('./requisicao/funcionario.js'); 
 app.use('/Funcionario', FuncionarioRota)
 
+const CarrinhoRota = require('./requisicao/Carrinho.js');
+app.use('/carrinho', CarrinhoRota);
 
 //arquivos estaticos
 app.use(express.static(path.join(__dirname, '../Frontend')));
