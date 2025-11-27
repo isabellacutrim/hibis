@@ -9,20 +9,51 @@
 </head>
 <body>
 
-  <aside class="conteiner">
-    <h1>Carrinho</h1>
+    <aside class="conteiner">
+        <h1>Carrinho</h1>
 
-    <!-- Lista dinâmica dos itens -->
-    <div id="lista-carrinho"></div>
+        <!-- AQUI OS ITENS DO CARRINHO VÃO APARECER -->
+        <div id="lista-carrinho"></div>
 
-    <!-- Total -->
-    <p id="total">Total: R$ 0,00</p>
-  </aside>
+        <div class="total">
+            <p id="total">Total: R$ 0,00</p>
+        </div>
+    </aside>
 
-  <!-- Botão para finalizar -->
-  <button id="btnFinalizar">Finalizar Compra</button>
+   <!-- <button id="btnFinalizar">Finalizar Compra</button>-->
 
-  <!-- Arquivo JS -->
-  <script src="../js/carrinho.js"></script>
+<script>
+async function carregarCarrinho() {
+    const id_cliente = 1; // coloque o id certo aqui
+
+    const resposta = await fetch(`http://localhost:3000/carrinho/listar/${id_cliente}`);
+    const itens = await resposta.json();
+
+    const lista = document.getElementById("lista-carrinho");
+    const totalSpan = document.getElementById("total");
+
+    lista.innerHTML = "";
+    let total = 0;
+
+    itens.forEach(item => {
+        total += Number(item.valorProduto) * item.quantidade;
+
+        lista.innerHTML += `
+            <div class="item">
+                <img src="${item.imagem}">
+                <h3>${item.nomeProduto}</h3>
+                <p>Quantidade: ${item.quantidade}</p>
+                <p>Preço: R$ ${Number(item.valorProduto).toFixed(2)}</p>
+            </div>
+        `;
+    });
+
+    totalSpan.textContent = "Total: R$ " + total.toFixed(2);
+}
+
+carregarCarrinho();
+</script>
+
+
 </body>
 </html>
