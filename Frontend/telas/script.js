@@ -38,5 +38,10 @@ document.querySelector('#loginCliente').addEventListener('submit', async functio
     event.preventDefault();
     const email = document.querySelector('input[name="email"]').value;
     const senha = document.querySelector('input[name="senha"]').value;
+    const confirmar_senha = document.querySelector('input[name="confirmar_senha"]').value;
+    if (senha !== confirmar_senha) {
+        alert('Senha e confirmação de senha não coincidem!');
+        return;
+    }
 })
 

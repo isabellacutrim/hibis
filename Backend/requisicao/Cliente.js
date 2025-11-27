@@ -123,19 +123,63 @@ router.put('/atualizar/todos/:id', (req, res) => {
 
 // post (login)
 //http://localhost:3000/cliente/login
+
+// router.post('/login', (req, res) => {
+//     const { email, senha } = req.body;
+//     if (!email || !senha) {
+//         return res.status(400).json({error: 'Email e senha são obrigatórios!'});
+//     }
+//     try {
+//         conexao.query('SELECT * FROM tbusuario WHERE email = ?', [email], (err, results) => {
+//             // if (senha != 'SELECT senha FROM tbusuario WHERE email = ?) {
+//             //     return res.status(401).json({ error: 'Credenciais inválidas!' });
+//             // }
+//             res.json({message: 'Login bem sucedido!'})
+//             if (err) return res.status(500).json({ error: err.message });
+//         });
+//     } catch (err) {
+//         return res.status(500).json({ error: err.message });
+//     }
+
+// });
+
+// post (login)
+// http://localhost:3000/cliente/login
 router.post('/login', (req, res) => {
     const { email, senha } = req.body;
+
     if (!email || !senha) {
-        return res.status(400).json({error: 'Email e senha são obrigatórios!'});
-    }
-    try {
-        conexao.query('SELECT * FROM tbusuario WHERE email = ? AND senha = ?', [email, senha], (err, results) => {
-            if (err) return res.status(500).json({ error: err.message });
-        });
-    } catch (err) {
-        return res.status(500).json({ error: err.message });
+        return res.status(400).json({ error: 'Email e senha são obrigatórios!' });
     }
 
+    conexao.query(
+        'SELECT * FROM tbusuario WHERE email = ? AND senha = ?',
+        [email, senha],
+        (err, results) => {
+             // commits:
+            // Erro no banco
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+
+            // Nenhum usuário encontrado
+            if (results.length === 0) {
+                return res.status(401).json({ error: 'Email ou senha incorretos.' });
+            }
+
+            // Usuário encontrado
+            const usuario = results[0];
+
+            return res.status(200).json({
+                message: 'Login realizado com sucesso!',
+                usuario: {
+                    codUsuario: usuario.codUsuario,
+                    nomeUsuario: usuario.nomeUsuario,
+                    email: usuario.email
+                }
+            });
+        }
+    );
 });
 
 module.exports = router;

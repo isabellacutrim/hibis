@@ -50,8 +50,6 @@ router.post('/cadastroProduto', (req, res) => {
 
     const { nomeProduto, codProduto, confCod, classificProduto, quantidade, valorProduto } = req.body;
 
-
-
     if (!nomeProduto || !codProduto || !confCod || !classificProduto || !quantidade || !valorProduto) {
         return res.status(400).send("Todos os campos são obrigatórios!");
     }

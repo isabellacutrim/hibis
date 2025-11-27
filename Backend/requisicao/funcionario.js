@@ -4,7 +4,7 @@ const conexao = require('../database/conexao.js')
 
 
 //get (geral)
-//http://localhost:3000/Funcionario/funcionarios
+//http://localhost:3000/funcionario/funcionarios
 router.get('/funcionarios', (req, res) => {
     conexao.query('SELECT * FROM tbFuncionario', (err, results) => {
         if (err) return res.status(500).json({ error: err.message })
@@ -13,7 +13,7 @@ router.get('/funcionarios', (req, res) => {
 });
 
 //post (login)
-//http://localhost:3000/Funcionario/login
+//http://localhost:3000/funcionario/login
 router.post('/login', (req, res) => {
     const { email, senha } = req.body;
     
