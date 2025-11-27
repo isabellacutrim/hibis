@@ -15,30 +15,42 @@ router.get('/funcionarios', (req, res) => {
 //post (login)
 //http://localhost:3000/funcionario/login
 router.post('/login', (req, res) => {
-    const { email, senha } = req.body;
-    
-    if (!email || !senha) {
-        return res.status(400).json({ error: 'Email e senha são obrigatórios.' });
+    const { emailFunc, senha } = req.body;
+
+    if (!emailFunc || !senha) {
+        return res.status(400).json({ error: 'Email e senha são obrigatórios!' });
     }
-    
+
     conexao.query(
-        'SELECT * FROM tbFuncionario WHERE emailfunc = ? AND senha = ?', 
-        [email, senha], 
+        'SELECT * FROM tbFuncionario WHERE emailFunc = ? AND senha = ?',
+        [emailFunc, senha],
         (err, results) => {
-            
-            //erro no banco
+             // commits:
+            // Erro no banco
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
-            
+
+            // Nenhum usuário encontrado
             if (results.length === 0) {
                 return res.status(401).json({ error: 'Email ou senha incorretos.' });
             }
-            
-            const funcionario = results[0];
-            return console.log("Login bem-sucedido para o funcionário:", funcionario.nomefunc);
+
+            // Usuário encontrado
+            const usuario = results[0];
+
+            return res.status(200).json({
+                message: 'Login realizado com sucesso!',
+                usuario: {
+                    id: usuario.id,
+                    nome_completo: usuario.nome_completo,
+                    emailFunc: usuario.emailFunc
+                }
+            });
         }
     );
 });
 module.exports = router;
+
+
 
