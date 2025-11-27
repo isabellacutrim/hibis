@@ -21,6 +21,27 @@ router.get('/id/:id_carrinho', (req, res) => {
         res.json(results);
     });
 });
+router.get('/listar/:id_cliente', (req, res) => {
+    const { id_cliente } = req.params;
+
+    const sql = `
+        SELECT c.id, c.quantidade, p.nome, p.preco, p.img
+        FROM tbCarrinho c
+        JOIN produto p ON p.id = c.id_produto
+        WHERE c.id_cliente = ?;
+    `;
+
+    conexao.query(sql, [id_cliente], (erro, resultado) => {
+        if (erro) {
+            console.log(erro);
+            return res.status(500).send({ erro: "Erro ao consultar carrinho" });
+        }
+        res.send(resultado);
+    });
+});
+
+// EXPORTAR ROTAS
+module.exports = router;
 
 //get (por cliente)
 //http://localhost:3000/carrinho/idCliente/1
