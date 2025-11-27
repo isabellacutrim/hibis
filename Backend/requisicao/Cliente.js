@@ -122,28 +122,6 @@ router.put('/atualizar/todos/:id', (req, res) => {
 });
 
 // post (login)
-//http://localhost:3000/cliente/login
-
-// router.post('/login', (req, res) => {
-//     const { email, senha } = req.body;
-//     if (!email || !senha) {
-//         return res.status(400).json({error: 'Email e senha são obrigatórios!'});
-//     }
-//     try {
-//         conexao.query('SELECT * FROM tbusuario WHERE email = ?', [email], (err, results) => {
-//             // if (senha != 'SELECT senha FROM tbusuario WHERE email = ?) {
-//             //     return res.status(401).json({ error: 'Credenciais inválidas!' });
-//             // }
-//             res.json({message: 'Login bem sucedido!'})
-//             if (err) return res.status(500).json({ error: err.message });
-//         });
-//     } catch (err) {
-//         return res.status(500).json({ error: err.message });
-//     }
-
-// });
-
-// post (login)
 // http://localhost:3000/cliente/login
 router.post('/login', (req, res) => {
     const { email, senha } = req.body;
@@ -153,7 +131,7 @@ router.post('/login', (req, res) => {
     }
 
     conexao.query(
-        'SELECT * FROM tbusuario WHERE email = ? AND senha = ?',
+        'SELECT * FROM tbUsuario WHERE email = ? AND senha = ?',
         [email, senha],
         (err, results) => {
              // commits:
