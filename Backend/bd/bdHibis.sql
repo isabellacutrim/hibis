@@ -1,7 +1,9 @@
 CREATE DATABASE Hibis
-DROP DATABASE Hibis;
 USE Hibis;
+DROP DATABASE Hibis;
 
+
+-- tbUsuario
 CREATE TABLE tbUsuario (
     id  INT  AUTO_INCREMENT PRIMARY KEY,
     cpf         Varchar(11) NOT NULL,
@@ -11,38 +13,60 @@ CREATE TABLE tbUsuario (
     email  VARCHAR(150) UNIQUE NOT NULL,
     senha      VARCHAR(50)      NOT NULL
 );
+select * from tbusuario;
+drop table tbusuario;
 
+-- tbProduto
 CREATE TABLE tbProduto(
     codProduto INT AUTO_INCREMENT PRIMARY KEY,
     nomeProduto VARCHAR(50) NOT NULL,
     classificProduto VARCHAR(50) NOT NULL,
-    valorProduto DECIMAL(10,2) NOT NULL
+    valorProduto DECIMAL(10,2) NOT NULL,
+    imagem VARCHAR(255)
 );
+INSERT INTO tbProduto (codProduto, nomeProduto, classificProduto, valorProduto, imagem) VALUES
+(1, 'Hidratante Facial HidraHíbis', 1, 35.90, '/img/Hidratante facial HidraHíbis.png'),
+(2, 'Primer HB Prime', 1, 40.49, '/img/PrimerHbPrime.png'),
+(3, 'Sérum Facial HB Íris', 1, 39.99, '/img/serumfacial.png'),
+(4, 'Híbis Blindagem', 1, 35.99, '/img/blindagem.png'),
+(5, 'Lenço Demaquilante Híbis', 1, 40.50, '/img/lencodemaquilante.png'),
+(6, 'Bruma Fixadora HB Fix', 1, 49.90, '/img/brumafixadora.png'),
+(7, 'Base Híbis Skin', 2, 50.00, '/img/base.png'),
+(8, 'Corretivo Híbis Soft Dew', 2, 40.49, '/img/corretivo.png'),
+(9, 'Pó compacto Híbis Touch', 2, 39.99, '/img/pocompacto.png'),
+(10, 'Contorno em Pó Híbis Touch', 2, 35.59, '/img/contornoempo.png'),
+(11, 'Blush em pó HB Dust Bloom', 2, 35.99, '/img/blush.png'),
+(12, 'Blush Líquido Híbis Bloom', 2, 40.00, '/img/blushliquido.png'),
+(13, 'Iluminador Híbis Shinee', 2, 30.90, '/img/iluminador.png'),
+(14, 'Contorno em Stick Híbis Velvet', 2, 40.50, '/img/contornoemstick.png'),
+(15, 'Delineador Híbis LINE', 3, 39.99, '/img/delineador.png'),
+(16, 'Rímel Híbis Lash', 3, 49.90, '/img/rimel.png'),
+(17, 'Paleta de sombras HB Garden', 3, 59.90, '/img/paletagarden.png'),
+(18, 'Paleta de sombras HB Basic Eye', 3, 69.90, '/img/paletabasic.png'),
+(19, 'Gloss Híbis Glow', 4, 29.90, '/img/gloss.png'),
+(20, 'Batom Híbis Kisses', 4, 35.00, '/img/batom.png'),
+(21, 'Lápis de boca HB LipFrame', 4, 25.00, '/img/lapisdeboca.png');
 
-INSERT INTO tbProduto (codProduto, nomeProduto, classificProduto, valorProduto) VALUES
-(1, 'Hidratante Facial HidraHíbis', 'Preparação', 35.90),
-(2, 'Primer HB Prime', 'Preparação', 40.49),
-(3, 'Sérum Facial HB Íris', 'Preparação', 39.99),
-(4, 'Híbis Blindagem', 'Preparação', 35.99),
-(5, 'Lenço Demaquilante Híbis', 'Preparação', 40.50),
-(6, 'Bruma Fixadora HB Fix', 'Preparação', 49.90),
-(7, 'Base Híbis Skin', 'Pele', 50.00),
-(8, 'Corretivo Híbis Soft Dew', 'Pele', 40.49),
-(9, 'Pó compacto Híbis Touch', 'Pele', 39.99),
-(10, 'Contorno em Pó Híbis Touch', 'Pele', 35.59),
-(11, 'Blush em pó HB Dust Bloom', 'Pele', 35.99),
-(12, 'Blush Líquido Híbis Bloom', 'Pele', 40.00),
-(13, 'Iluminador Híbis Shinee', 'Pele', 30.90),
-(14, 'Contorno em Stick Híbis Velvet', 'Pele', 40.50),
-(15, 'Delineador Híbis LINE', 'Olhos', 39.99),
-(16, 'Rímel Híbis Lash', 'Olhos', 49.90),
-(17, 'Paleta de sombras HB Garden', 'Olhos', 59.90),
-(18, 'Paleta de sombras HB Basic Eye', 'Olhos', 69.90),
-(19, 'Gloss Híbis Glow', 'Boca', 29.90),
-(20, 'Batom Híbis Kisses', 'Boca', 35.00),
-(21, 'Lápis de boca HB LipFrame', 'Boca', 25.00);
+select * from tbProduto;
+drop table tbProduto;
+
+-- tbCategorias
+
+CREATE TABLE tbCategorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao VARCHAR(100) NOT NULL
+);
+drop table tbCategorias;
+INSERT INTO tbCategorias (nome, descricao) VALUES
+	('Preparação', 'Cuidados com a pele antes da maquiagem, com maior duração na make'),
+	('Pele', 'Produtos para a pele da maquiagem'),
+	('Olho', 'Produtos para o olho'),
+	('Boca', 'Produtos para a boca');
 
 
+
+-- tbFuncionario
 CREATE TABLE tbFuncionario(
 	codFuncionario  INT AUTO_INCREMENT PRIMARY KEY,
 	nomeFuncionario VARCHAR (50) NOT NULL,	
@@ -52,22 +76,25 @@ CREATE TABLE tbFuncionario(
 	emailFunc VARCHAR(150) NOT NULL,
     senha VARCHAR(10) NOT NULL
 );
-    
 INSERT INTO tbFuncionario (nomeFuncionario, cpfFuncionario, dataNascFunc, telefoneFunc, emailFunc, senha ) VALUES
 ('Isabella Cutrim', '74466553587', '2008-11-19', '11985757666', 'isabellaCutrim@gmail.com', 'hibis2025'),
 ('Geovanna Lino', '94466553587','2009-01-20', '11974630976', 'GeovannaLino@gmail.com', 'hibis2025' ),
 ('Esther Siqueira', '74466553587', '2008-07-03', '11935793575', 'EstherSiqueira@gmail.com', 'hibis2025' ),
 ('Sophia Barcelos', '74466553087', '2008-11-07', '11996532456', 'SophiaBarcelosm@gmail.com' , 'hibis2025');
+select * from tbFuncionario;
+drop table tbFuncionario;
 
+
+-- tbCarrinho
 CREATE TABLE tbCarrinho (
 	id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
 	id_cliente  INT  NOT NULL,
-  id_produto  INT  NOT NULL,
-  quantidade INT NOT NULL DEFAULT 1,
+    codProduto  INT  NOT NULL,
+    quantidade INT NOT NULL DEFAULT 1,
 	FOREIGN KEY (id_cliente) REFERENCES tbUsuario(id),
-	FOREIGN KEY (id_produto) REFERENCES tbProduto(id)
+	FOREIGN KEY (codProduto) REFERENCES tbProduto(codProduto)
 );
-
+drop table tbCarrinho;
 -- view para ver o carrinho completo
 CREATE VIEW vw_carrinho_completo AS
 SELECT 
@@ -79,50 +106,57 @@ SELECT
     c.quantidade,
     (p.valorProduto * c.quantidade) as subtotal
 FROM tbcarrinho c
-INNER JOIN tbUsuario u ON c.id_cliente = u.usuario_id
-INNER JOIN tbProduto p ON c.id_produto = p.produto_id;
+INNER JOIN tbUsuario u ON c.id_cliente = u.id
+INNER JOIN tbProduto p ON c.codProduto = p.codProduto;
+select * from vw_carrinho_completo;
+select * from vw_carrinho_completo where usuario_id = 1;
 
 -- FUNCTION para calcular total do carrinho
+-- delimitando ;
+DELIMITER $$
 CREATE FUNCTION fc_calcular_total_carrinho(p_usuario_id INT)
-RETURNS DECIMAL(10,2) AS $$
-DECLARE
-    total DECIMAL(10,2);
+RETURNS DECIMAL(10,2)
+DETERMINISTIC
 BEGIN
-    SELECT (SUM(p.valorProduto * c.quantidade), 0)
-    INTO total
-    FROM tbcarrinho c
-    INNER JOIN tbProduto p ON c.id_produto = p.id
-    WHERE c.id_usuario = p_usuario_id;
-    
-    RETURN total;
-END;
+    DECLARE total DECIMAL(10,2);
 
+    -- Calcula o total do carrinho
+    SELECT SUM(p.valorProduto * c.quantidade)
+    INTO total
+    FROM tbCarrinho c
+    INNER JOIN tbProduto p ON c.codProduto = p.codProduto
+    WHERE c.id_cliente = p_usuario_id;
+
+    -- Se o carrinho estiver vazio, SUM retorna NULL — então definimos 0
+    IF total IS NULL THEN
+        SET total = 0;
+    END IF;
+
+    RETURN total;
+END$$
+DELIMITER ;
+drop function fc_calcular_total_carrinho;
+SELECT fc_calcular_total_carrinho(2) as total_carrinho;
 
 -- 3.  para atualizar quantidade
+DELIMITER $$
 CREATE PROCEDURE sp_atualizar_quantidade_carrinho(
     p_usuario_id INT,
     p_produto_id INT,
     p_nova_quantidade INT
 )
-AS $$
 BEGIN
     IF p_nova_quantidade <= 0 THEN
         DELETE FROM tbcarrinho 
-        WHERE id_usuario = p_usuario_id AND id_produto = p_produto_id;
+        WHERE id_cliente = p_usuario_id AND codProduto = p_produto_id;
     ELSE
         UPDATE tbcarrinho 
         SET quantidade = p_nova_quantidade
-        WHERE id_usuario = p_usuario_id AND id_produto = p_produto_id;
+        WHERE id_cliente = p_usuario_id AND codProduto = p_produto_id;
     END IF;
-END;
+END$$
+DELIMITER ;
+DROP PROCEDURE sp_atualizar_quantidade_carrinho;
+CALL sp_atualizar_quantidade_carrinho(2, 5, 3);
 
-select * from tbProduto;
-select * from tbusuario;
-select * from tbFuncionario;
-select * from vw_carrinho_completo;
-select * from vw_carrinho_completo where usuario_id = 1;
-SELECT fn_calcular_total_carrinho(1) as total_carrinho;
-CALL sp_atualizar_quantidade_carrinho(1, 5, 3);
-drop table tbusuario;
-drop table tbFuncionario;
 
