@@ -6,6 +6,16 @@ const port = 3000;
 app.use(cors({
     origin: '*'
 }));
+app.use(session({
+    secret: '', 
+    resave: false,
+    saveUninitialized: false,
+    cookie: { 
+        secure: true, // 
+        maxAge: 24 * 60 * 60 * 1000 // 24 horas
+    }
+}));
+
 
 // Middlewares 
 // Configurações para servir arquivos estáticos e fazer o parse de JSON e URL-encoded

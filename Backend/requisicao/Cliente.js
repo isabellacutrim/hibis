@@ -12,6 +12,8 @@ router.get('/clientes', (req, res) => {
     });
 });
 
+
+
 //get (por codigo)
 //http://localhost:3000/cliente/id/1
 router.get('/id/:id', (req, res) => {
@@ -147,6 +149,13 @@ router.post('/login', (req, res) => {
 
             // Usuário encontrado
             const usuario = results[0];
+            
+            req.session.usuario = {
+                id: usuario.id,
+                nome_completo: usuario.nome_completo,
+                email: usuario.email,
+                logado: true
+            };
 
             return res.status(200).json({
                 message: 'Login realizado com sucesso!',

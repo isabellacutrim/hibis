@@ -33,7 +33,40 @@ form.addEventListener("submit", function (e) {
     .catch(err => {
         alert("Erro ao cadastrar: " + err);
     });
+
+    //api para login do backend
+    fetch(`${API}/cliente/login`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ email, senha })
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => { throw err; });
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Login bem-sucedido
+        document.getElementById('mensagem').textContent = data.message;
+        document.getElementById('mensagem').style.color = 'pink';
+                
+        // Armazenar usuário no localStorage (simula sessão)
+        localStorage.setItem('usuarioLogado', JSON.stringify(data.usuario));
+                
+        // Redirecionar para home após 1 segundo
+        setTimeout(() => {
+            window.location.href = '/home-index.html';
+        }, 3000);
+            })
+    .catch(error => {
+        //erro
+        document.getElementById('mensagem').textContent = error.error;
+        document.getElementById('mensagem').style.color = 'pink';
+    });
 });
+
+
 
 
 //lListar clientes
@@ -134,3 +167,4 @@ function atualizarTodos(id, dados) {
 }
 
 
+            

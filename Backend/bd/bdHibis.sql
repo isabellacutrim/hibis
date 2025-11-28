@@ -1,5 +1,5 @@
 CREATE DATABASE Hibis
-USE Hibis;
+USE Hibis; .
 DROP DATABASE Hibis;
 
 
@@ -15,6 +15,8 @@ CREATE TABLE tbUsuario (
 );
 select * from tbusuario;
 drop table tbusuario;
+
+
 
 -- tbProduto
 CREATE TABLE tbProduto(
