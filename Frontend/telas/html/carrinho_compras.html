@@ -26,7 +26,7 @@
 async function carregarCarrinho() {
     const id_cliente = 1; // coloque o id certo aqui
 
-    const resposta = await fetch(`http://localhost:3000/carrinho/listar/${id_cliente}`);
+    const resposta = await fetch(`http://localhost:3000/carrinho/listar/2`);
     const itens = await resposta.json();
 
     const lista = document.getElementById("lista-carrinho");

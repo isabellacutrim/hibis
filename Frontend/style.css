@@ -65,6 +65,8 @@ h1{
 
 .img2{
     background-image: url("img/moça2.png");
+    background-repeat: no-repeat;  
+    background-size: cover;
     width: 600px;
     height: 400px;
     text-align: center;

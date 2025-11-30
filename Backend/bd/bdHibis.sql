@@ -1,5 +1,5 @@
-CREATE DATABASE Hibis
-USE Hibis; .
+CREATE DATABASE Hibis;
+USE Hibis; 
 DROP DATABASE Hibis;
 
 
@@ -90,13 +90,18 @@ drop table tbFuncionario;
 -- tbCarrinho
 CREATE TABLE tbCarrinho (
 	id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
-	id_cliente  INT  NOT NULL,
+	id  INT  NOT NULL,
     codProduto  INT  NOT NULL,
     quantidade INT NOT NULL DEFAULT 1,
-	FOREIGN KEY (id_cliente) REFERENCES tbUsuario(id),
+    imagem VARCHAR(255),
+	FOREIGN KEY (id) REFERENCES tbUsuario(id),
 	FOREIGN KEY (codProduto) REFERENCES tbProduto(codProduto)
 );
+INSERT INTO tbCarrinho (id, codProduto, quantidade, imagem) VALUES 
+	(2, 3, 2, '/img/serumfacial.png');
+    
 drop table tbCarrinho;
+select * from tbCarrinho;
 -- view para ver o carrinho completo
 CREATE VIEW vw_carrinho_completo AS
 SELECT 
@@ -104,14 +109,17 @@ SELECT
     u.nome_completo as usuario_nome,
     p.codProduto as produto_id,
     p.nomeProduto,
+    p.imagem,
     p.valorProduto,
     c.quantidade,
     (p.valorProduto * c.quantidade) as subtotal
 FROM tbcarrinho c
-INNER JOIN tbUsuario u ON c.id_cliente = u.id
+INNER JOIN tbUsuario u ON c.id = u.id
 INNER JOIN tbProduto p ON c.codProduto = p.codProduto;
+
+drop view vw_carrinho_completo;
 select * from vw_carrinho_completo;
-select * from vw_carrinho_completo where usuario_id = 1;
+select * from vw_carrinho_completo where usuario_id = 2;
 
 -- FUNCTION para calcular total do carrinho
 -- delimitando ;

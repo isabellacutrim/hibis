@@ -6,15 +6,15 @@ const port = 3000;
 app.use(cors({
     origin: '*'
 }));
-app.use(session({
-    secret: '', 
-    resave: false,
-    saveUninitialized: false,
-    cookie: { 
-        secure: true, // 
-        maxAge: 24 * 60 * 60 * 1000 // 24 horas
-    }
-}));
+// app.use(session({
+//     secret: '', 
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: { 
+//         secure: true, // 
+//         maxAge: 24 * 60 * 60 * 1000 // 24 horas
+//     }
+// }));
 
 
 // Middlewares 
